@@ -13,10 +13,10 @@ sed -i 's/192.168.1.1/192.168.31.1/g' package/base-files/files/bin/config_genera
 # =====================================================================
 # 强拉稳定版分支，防止最新版对 Go 版本要求过高导致闭源驱动冲突
 rm -rf package/mosdns
-git clone --depth=1 -b openwrt-21.02 https://github.com/sbwml/luci-app-mosdns package/mosdns
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 
-rm -rf package/v2ray-geodata
-git clone --depth=1 https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+rm -rf feeds/packages/net/v2ray-geodata
+git clone https://github.com/sbwml/v2ray-geodata.git package/feeds/v2ray-geodata
 
 rm -rf package/netspeedtest
 git clone --depth=1 https://github.com/muink/luci-app-netspeedtest.git package/netspeedtest
