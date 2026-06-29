@@ -31,23 +31,20 @@ git clone --depth=1 https://github.com/vernesong/OpenClash.git package/luci-app-
 
 
 # =====================================================================
-# 3. 为 OpenClash 提前打包内置 Clash Meta (Mihomo) 内核
+# 3. 【核心提取】直接从仓库根目录复制你上传的 Clash Meta 内核
 # =====================================================================
 # 创建 OpenClash 放置 Meta 内核的特定源码目录
 META_CORE_DIR="package/luci-app-openclash/luasrc/view/openclash/root/etc/openclash/core"
 mkdir -p "$META_CORE_DIR"
 
-# 从 OpenClash 官方内核源下载最新稳定版 Meta 内核并解压重命名
-echo "正在预下载红米 AX6000 专属的 Clash Meta 内核并打包进源码..."
-curl -sL "https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash_meta-linux-arm64.tar.gz" -o /tmp/clash_meta.tar.gz
-if [ -s /tmp/clash_meta.tar.gz ]; then
-    tar -zxf /tmp/clash_meta.tar.gz -C /tmp/
-    mv /tmp/clash_meta "$META_CORE_DIR/clash_meta"
+echo "正在从仓库根目录复制 Clash Meta 内核..."
+# 判断根目录下的备份内核是否存在
+if [ -f "clash_meta" ]; then
+    cp clash_meta "$META_CORE_DIR/clash_meta"
     chmod +x "$META_CORE_DIR/clash_meta"
-    rm -f /tmp/clash_meta.tar.gz
-    echo "Clash Meta 内核集成成功！"
+    echo ">>>> 🎉 Clash Meta 内核已从根目录成功复制并集成！ <<<<"
 else
-    echo "警告：内核下载失败，请确保本地编译机网络畅通，或后续手动放置内核！"
+    echo "❌ 错误：未在仓库根目录下找到 clash_meta 文件！"
 fi
 
 
