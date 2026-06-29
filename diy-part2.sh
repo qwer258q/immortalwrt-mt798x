@@ -49,16 +49,16 @@ fi
 
 
 # =====================================================================
-# 4. 强制清除 Feeds 目录中自带的远古过时、冲突的旧文件并升级 Go 编译器
+# 4. 强制清除 Feeds 目录中自带的旧文件并升级 Go 编译器为 26.x（核心修改点）
 # =====================================================================
 if [ -d "feeds/packages" ]; then
-    echo "检测到 feeds 已下载，开始替换高版本 Golang 和清理旧包..."
+    echo "检测到 feeds 已下载，开始替换高版本 Golang (26.x) 和清理旧包..."
     
-    # 强制将远古低版本 Go 语言编译器升级为适配高版本（编译新版 MosDNS / OpenClash 必备）
+    # 强制将远古低版本 Go 语言编译器升级为 26.x 分支（解决新版 MosDNS 报错必备）
     rm -rf feeds/packages/lang/golang
-    git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+    git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
 
-    # 强力清除原本 feeds 里可能冲突的远古旧包
+    # 强力清除原本 feeds 里可能冲突的旧包
     rm -rf feeds/packages/net/mosdns
     rm -rf feeds/packages/net/v2ray-geodata
     rm -rf feeds/packages/utils/v2dat
