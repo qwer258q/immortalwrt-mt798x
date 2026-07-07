@@ -10,11 +10,11 @@ echo "========== 开始执行 diy-part2.sh =========="
 # 0. 自动应用 MT7986 默认配置
 # =====================================================================
 echo "正在复制 mt7986-ax6000.config ..."
-if [ -f "defconfig/mt7981-ax3000.config" ]; then
-    cp defconfig/mt7981-ax3000.config .config
+if [ -f "defconfig/mt7986-ax6000.config" ]; then
+    cp -f defconfig/mt7986-ax6000.config .config
     echo "✅ .config 配置文件已应用！"
 else
-    echo "⚠️ 未找到 defconfig/mt7981-ax3000.config"
+    echo "⚠️ 未找到 defconfig/mt7986-ax6000.config"
 fi
 
 # =====================================================================
