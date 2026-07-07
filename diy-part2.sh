@@ -14,7 +14,7 @@ if [ -f "defconfig/mt7981-ax3000.config" ]; then
     cp defconfig/mt7981-ax3000.config .config
     echo "✅ .config 配置文件已应用！"
 else
-    echo "⚠️ 未找到 defconfig/mt7986-ax6000.config"
+    echo "⚠️ 未找到 defconfig/mt7981-ax3000.config"
 fi
 
 # =====================================================================
